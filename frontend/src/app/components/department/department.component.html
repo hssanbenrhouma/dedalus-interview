@@ -21,7 +21,7 @@
       <td>{{ employee.phoneNumber || 'No phone provided' }}</td>
     
       <td>
-        <a href="#" (click)="deleteEmployee(employee.id); $event.stopPropagation()">Delete</a>
+        <a href="#" (click)="deleteEmployee(employee.id); $event.preventDefault(); $event.stopPropagation()">Delete</a>
     </tr>
   </tbody>
 </table>

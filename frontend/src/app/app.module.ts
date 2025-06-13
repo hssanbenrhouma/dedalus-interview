@@ -3,23 +3,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { DepartmentComponent } from './components/department/department.component';
-import { EmployeeComponent } from './components/employee/employee.component';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { EmployeeService } from './services/employee.service';
 import { DepartmentService } from './services/department.service';
 import { HttpClientModule } from '@angular/common/http';
-import { ModalComponent } from './components/shared/modal/modal.component';
 import { SharedModule } from './components/shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     DepartmentComponent,
-    DashboardComponent,
-    EmployeeComponent
-    ],
+    DashboardComponent
+      ],
   imports: [
     CommonModule,
     FormsModule,
