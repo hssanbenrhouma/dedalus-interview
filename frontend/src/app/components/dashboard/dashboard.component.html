@@ -1,0 +1,82 @@
+<div class="search-bar">
+  <input
+    type="text"
+    placeholder="Search employees by name"
+    [(ngModel)]="searchTerm"
+    (input)="onSearchChange()"
+  />
+</div>
+<table *ngIf="searching && searchResults.length > 0" class="search-results">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Department</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of searchResults"
+     (click)="goToDepartmentByEmployee(employee)" 
+     style="cursor:pointer">
+
+      <td>{{ employee.fullName }}</td>
+      <td>{{ employee.department?.name || 'Unassigned' }}</td>
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="searching && searchResults.length === 0">
+  <p>No employees found.</p>
+</div>
+<div *ngIf="!searching" class="departments">
+     <div class="no-departments" *ngIf="departments.length === 0">
+      <p>No departments available.</p>
+    </div>
+    <div
+  class="department-card"
+  *ngFor="let department of departments"
+  (click)="navigateToDepartment(department)"
+  tabindex="0"
+  role="button"
+>
+  <span class="count">{{ department.employeeCount }}</span>
+  <p>{{ department.name }}</p>
+  <a
+    class="delete-link"
+    href="#"
+    (click)="deleteDepartment(department.id); $event.stopPropagation()"
+    tabindex="-1"
+  >Delete</a>
+</div>
+
+    <div class="department-card unassigned"
+      (click)="navigateToUnassigned()">
+      <span class="count">{{ unassignedEmployeesCount }}</span>
+      <p>Unassigned</p>
+  <a
+      class="delete-link"
+      href="#"
+      (click)="deleteUnassigned(); 
+      $event.stopPropagation()"
+      tabindex="-1"
+    >Delete</a>
+    </div>
+
+  </div>
+
+  <button class="add-department" (click)="addDepartment()">Add Department</button>
+
+<app-modal [show]="showAddDepartmentModal" title="Add Department" (close)="closeAddDepartmentModal()">
+  <form (ngSubmit)="createDepartment()" #deptForm="ngForm">
+    <input
+      type="text"
+      placeholder="Department Name"
+      [(ngModel)]="newDepartmentName"
+      name="departmentName"
+      required
+      autofocus
+    />
+    <div class="modal-actions">
+      <button type="submit" [disabled]="!deptForm.form.valid">Add</button>
+      <button type="button" (click)="closeAddDepartmentModal()">Cancel</button>
+    </div>
+  </form>
+</app-modal>

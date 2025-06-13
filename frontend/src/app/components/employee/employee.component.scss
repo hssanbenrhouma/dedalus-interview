@@ -1,0 +1,26 @@
+/* Styles specific to the employee component */
+
+.employee-details {
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.employee-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.employee-info {
+    margin-bottom: 15px;
+}
+
+.employee-info label {
+    font-weight: bold;
+}
+
+.employee-info p {
+    margin: 5px 0;
+}

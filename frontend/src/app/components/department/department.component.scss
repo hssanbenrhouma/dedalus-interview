@@ -1,0 +1,81 @@
+.department-container {
+    padding: 20px;
+}
+
+.employee-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.employee-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.employee-item:hover {
+    background-color: #f9f9f9;
+}
+
+.no-employees {
+    text-align: center;
+    font-style: italic;
+    color: #888;
+}
+.add-employee {
+  margin-top: 24px;
+  float: right;
+  padding: 8px 12px;
+  font-size: 14px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 300px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 6px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.departement-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+
+  th, td {
+    padding: 10px 16px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+  }
+
+  th {
+    background: #f7f7f7;
+    font-weight: 600;
+    color: #333;
+  }
+
+  tr {
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+
+  tr:hover {
+    background: #f0f8ff;
+  }
+}

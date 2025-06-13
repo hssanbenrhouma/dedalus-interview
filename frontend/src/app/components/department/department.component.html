@@ -1,0 +1,47 @@
+<div class="department-container">
+<h2 *ngIf="employees.length > 0">
+    Employees in {{ departmentId === 'unassigned' ? 'Unassigned' : employees[0].department?.name }}
+  </h2>  <table *ngIf="employees.length > 0" class="departement-table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+      <th>email</th>
+      <th>Phone</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let employee of employees" 
+     style="cursor:pointer">
+
+      <td>{{ employee.fullName }}</td>
+      <td>{{ employee.address || 'No address provided' }}</td>
+      <td>{{ employee.email || 'No email provided' }}</td>
+      <td>{{ employee.phoneNumber || 'No phone provided' }}</td>
+    
+      <td>
+        <a href="#" (click)="deleteEmployee(employee.id); $event.stopPropagation()">Delete</a>
+    </tr>
+  </tbody>
+</table>
+ 
+<div *ngIf="employees.length === 0">
+  <p>No employees found.</p>
+</div>
+  <button class="add-employee" (click)="openAddEmployeeModal()">Add Employee</button>
+</div>
+
+<!-- Add Employee Modal -->
+<app-modal [show]="showAddEmployeeModal" title="Add New Employee" (close)="closeAddEmployeeModal()">
+  <form (ngSubmit)="addEmployee()" #employeeForm="ngForm">
+    <input type="text" placeholder="Full Name" [(ngModel)]="newEmployee.fullName" name="fullName" required />
+    <input type="text" placeholder="Address" [(ngModel)]="newEmployee.address" name="address" />
+    <input type="email" placeholder="Email" [(ngModel)]="newEmployee.email" name="email" />
+    <input type="text" placeholder="Phone" [(ngModel)]="newEmployee.phoneNumber" name="phoneNumber" />
+    <div class="modal-actions">
+      <button type="submit" [disabled]="!employeeForm.form.valid">Add</button>
+      <button type="button" (click)="closeAddEmployeeModal()">Cancel</button>
+    </div>
+  </form>
+</app-modal>
